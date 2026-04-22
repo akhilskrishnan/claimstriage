@@ -39,7 +39,7 @@ def _llm_json(system: str, user: str) -> dict:
     """Call Claude and return the response parsed as JSON."""
     client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
     msg = client.messages.create(
-        model="claude-opus-4-5",
+        model="claude-haiku-4-5-20251001",
         max_tokens=1024,
         system=system,
         messages=[{"role": "user", "content": user}],
@@ -174,7 +174,7 @@ def recommend_actions(severity: str, liability_indicator: str, claim_type: str, 
 
 def build_agent() -> AgentExecutor:
     llm = ChatAnthropic(
-        model="claude-opus-4-5",
+        model="claude-haiku-4-5-20251001",
         api_key=os.getenv("ANTHROPIC_API_KEY"),
         temperature=0,
     )
